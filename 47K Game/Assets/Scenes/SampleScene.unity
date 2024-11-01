@@ -991,6 +991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f09bc554035ad4ab701891d745186e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NodeParent: {fileID: 857354099}
   LoopShouldEnd: 0
 --- !u!4 &1371954686
 Transform:
