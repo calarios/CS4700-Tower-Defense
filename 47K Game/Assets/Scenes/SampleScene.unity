@@ -150,8 +150,8 @@ Transform:
   m_GameObject: {fileID: 65161549}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 2.8, y: 0, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 7}
+  m_LocalPosition: {x: 2.8, y: 0, z: 3.36}
+  m_LocalScale: {x: 2, y: 1, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1319052931}
@@ -494,7 +494,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.2, y: 0, z: -1.0408}
-  m_LocalScale: {x: 1, y: 1, z: 10.852998}
+  m_LocalScale: {x: 2, y: 1, z: 10.852998}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1319052931}
@@ -595,7 +595,7 @@ Transform:
   m_GameObject: {fileID: 357192110}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.63, y: 0, z: -5.94}
+  m_LocalPosition: {x: -7.19, y: 0, z: -5.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -626,7 +626,7 @@ Transform:
   m_GameObject: {fileID: 387826855}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.93, y: 0, z: -9.47}
+  m_LocalPosition: {x: 5.93, y: 0, z: -10.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -657,7 +657,7 @@ Transform:
   m_GameObject: {fileID: 493267170}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.63, y: 0, z: 9.13}
+  m_LocalPosition: {x: -7.63, y: 0, z: 11.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -692,7 +692,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.5, y: 0, z: 1.75}
-  m_LocalScale: {x: 1, y: 1, z: 16.433977}
+  m_LocalScale: {x: 2, y: 1, z: 16.433977}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1319052931}
@@ -793,7 +793,7 @@ Transform:
   m_GameObject: {fileID: 576820858}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18, y: 0, z: 3.82}
+  m_LocalPosition: {x: -0.18, y: 0, z: 3.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1119,8 +1119,8 @@ Transform:
   m_GameObject: {fileID: 1155710910}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -3.5, y: 0, z: -6}
-  m_LocalScale: {x: 1, y: 1, z: 7}
+  m_LocalPosition: {x: -3.5, y: 0, z: -5.33}
+  m_LocalScale: {x: 2, y: 1, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1319052931}
@@ -1591,7 +1591,7 @@ Transform:
   m_GameObject: {fileID: 1692245802}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.93, y: 0, z: 4.16}
+  m_LocalPosition: {x: 5.93, y: 0, z: 3.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1622,7 +1622,7 @@ Transform:
   m_GameObject: {fileID: 1812695156}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.21, y: 0, z: -5.94}
+  m_LocalPosition: {x: -0.21, y: 0, z: -5.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1657,7 +1657,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6, y: 0, z: -2.7446}
-  m_LocalScale: {x: 1, y: 1, z: 14.342236}
+  m_LocalScale: {x: 2, y: 1, z: 14.342236}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1319052931}
@@ -1867,8 +1867,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec3aa65ff5e83244963b2da9147b38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlacementCheckMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  PlacementCollideMask:
+    serializedVersion: 2
+    m_Bits: 55
   PlayerCamera: {fileID: 963194227}
-  fixedHeight: 0
+  fixedHeight: 0.02
 --- !u!4 &2048399082
 Transform:
   m_ObjectHideFlags: 0

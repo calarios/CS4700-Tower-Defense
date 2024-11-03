@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 184093911946028717}
   m_Layer: 0
   m_Name: BasicEnemy
-  m_TagString: Untagged
+  m_TagString: Can Not Place
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6356f05b646786d43af2daacd164b798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NodeIndex: 0
   MaxHealth: 5
   Health: 0
   Speed: 4

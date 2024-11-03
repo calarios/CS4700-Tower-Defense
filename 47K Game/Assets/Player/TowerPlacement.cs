@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
 {
+    [SerializeField] private LayerMask PlacementCheckMask;
+    [SerializeField] private LayerMask PlacementCollideMask;
     [SerializeField] private Camera PlayerCamera;
     private GameObject CurrentPlacingTower;
 
     // Set a fixed height for the tower placement
-    [SerializeField] private float fixedHeight = 0f; // Adjust this value as needed
+    [SerializeField] private float fixedHeight = 0.02f; // Adjust this value as needed
 
     // Start is called before the first frame update
     void Start()
@@ -22,19 +24,34 @@ public class TowerPlacement : MonoBehaviour
         if (CurrentPlacingTower != null)
         {
             Ray camray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit HitInfo;
 
-            if (Physics.Raycast(camray, out RaycastHit hitInfo, 100f))
+            if (Physics.Raycast(camray, out HitInfo, 100f, PlacementCollideMask))
             {
                 // Create a new position with a consistent y value
-                Vector3 newPosition = hitInfo.point;
+                Vector3 newPosition = HitInfo.point;
                 newPosition.y = fixedHeight; // Set to the fixed height
 
                 CurrentPlacingTower.transform.position = newPosition;
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && HitInfo.collider.gameObject != null)
             {
-                CurrentPlacingTower = null;
+                if(!HitInfo.collider.gameObject.CompareTag("Can Not Place"))
+                {
+                    BoxCollider TowerCollider = CurrentPlacingTower.gameObject.GetComponent<BoxCollider>();
+                    TowerCollider.isTrigger = true;
+
+                    Vector3 BoxCenter = CurrentPlacingTower.gameObject.transform.position + TowerCollider.center;
+                    Vector3 HalfExtents = TowerCollider.size / 2;
+                    if(Physics.CheckBox(BoxCenter, HalfExtents, Quaternion.identity, PlacementCheckMask, QueryTriggerInteraction.Ignore))
+                    {
+                        TowerCollider.isTrigger = false;
+                        CurrentPlacingTower = null;
+                    }
+
+                }
+
             }
         }
     }
