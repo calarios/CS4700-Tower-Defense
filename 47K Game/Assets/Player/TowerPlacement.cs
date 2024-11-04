@@ -35,6 +35,13 @@ public class TowerPlacement : MonoBehaviour
                 CurrentPlacingTower.transform.position = newPosition;
             }
 
+            if(Input.GetKeyDown(KeyCode.Q))
+            {
+                Destroy(CurrentPlacingTower);
+                CurrentPlacingTower = null;
+                return;
+            }
+
             if (Input.GetMouseButtonDown(0) && HitInfo.collider.gameObject != null)
             {
                 if(!HitInfo.collider.gameObject.CompareTag("Can Not Place"))
@@ -46,6 +53,8 @@ public class TowerPlacement : MonoBehaviour
                     Vector3 HalfExtents = TowerCollider.size / 2;
                     if(Physics.CheckBox(BoxCenter, HalfExtents, Quaternion.identity, PlacementCheckMask, QueryTriggerInteraction.Ignore))
                     {
+                        GameLoopManager.TowersInGame.Add(CurrentPlacingTower.GetComponent<TowerBehavior>());
+
                         TowerCollider.isTrigger = false;
                         CurrentPlacingTower = null;
                     }

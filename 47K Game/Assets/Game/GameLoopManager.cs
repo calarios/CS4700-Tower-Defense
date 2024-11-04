@@ -8,7 +8,9 @@ using UnityEngine.Jobs;
 
 public class GameLoopManager : MonoBehaviour
 {
+    public static List<TowerBehavior> TowersInGame;
     public static Vector3[] NodePositions;
+    public static float[] NodeDistances;
     private static Queue<Enemy> EnemiesToRemove;
     private static Queue<int> EnemyIDsToSummon;
 
@@ -18,6 +20,7 @@ public class GameLoopManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TowersInGame = new List<TowerBehavior>();
         EnemyIDsToSummon = new Queue<int>();
         EnemiesToRemove = new Queue<Enemy>();
         EntitySummoner.Init();
@@ -28,6 +31,16 @@ public class GameLoopManager : MonoBehaviour
         {
             NodePositions[i] = NodeParent.GetChild(i).position;
         }
+
+
+        NodeDistances = new float[NodePositions.Length - 1];
+
+        for(int i = 0; i < NodeDistances.Length; i++)
+        {
+            NodeDistances[i] = Vector3.Distance(NodePositions[i], NodePositions[i + 1]);
+        }
+
+
 
         StartCoroutine(GameLoop());
         InvokeRepeating("SummonTest", 0f, 1f);
@@ -95,7 +108,13 @@ public class GameLoopManager : MonoBehaviour
             EnemyAccess.Dispose();
 //            NodesToUse.Dispose();
 
-            //Tiick Towers
+            //Tick Towers
+
+            foreach(TowerBehavior tower in TowersInGame)
+            {
+                tower.Target = TowerTargeting.GetTarget(tower, TowerTargeting.TargetType.Close);
+                tower.Tick();
+            }
 
             //Apply Effects
 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7558831077898143286}
   - component: {fileID: 184093911946028717}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BasicEnemy
   m_TagString: Can Not Place
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 8033913968423512151}
   - component: {fileID: 7455589728624608251}
   - component: {fileID: 5425101209214345696}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Basic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
