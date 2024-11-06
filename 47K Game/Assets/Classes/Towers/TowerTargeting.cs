@@ -12,9 +12,9 @@ public class TowerTargeting
         Last,
         Close
     }
-    public static Enemy GetTarget(TowerBehavior currentTower, TargetType TargetMethod)
+    public static Enemy GetTarget(TowerBehavior CurrentTower, TargetType TargetMethod)
     {
-        Collider[] EnemiesInRange = Physics.OverlapSphere(currentTower.transform.position, currentTower.Range, currentTower.EnemiesLayer);
+        Collider[] EnemiesInRange = Physics.OverlapSphere(CurrentTower.transform.position, CurrentTower.Range, CurrentTower.EnemiesLayer);
         NativeArray<EnemyData> EnemiesToCalculate = new NativeArray<EnemyData>(EnemiesInRange.Length, Allocator.TempJob);
         NativeArray<Vector3> NodePositions = new NativeArray<Vector3>(GameLoopManager.NodePositions, Allocator.TempJob);
         NativeArray<float> NodeDistances = new NativeArray<float>(GameLoopManager.NodeDistances, Allocator.TempJob);
@@ -38,7 +38,7 @@ public class TowerTargeting
             _EnemyToIndex = EnemyToIndex,
 //            CompareValue = Mathf.Infinity,
             TargetingType = (int)TargetMethod,
-            TowerPosition = currentTower.transform.position
+            TowerPosition = CurrentTower.transform.position
         };
 
         switch((int)TargetMethod)
@@ -58,19 +58,21 @@ public class TowerTargeting
 
         SearchJobHandle.Complete();
 
-        EnemyIndexToReturn = EnemiesToCalculate[EnemyToIndex[0]].EnemyIndex;
-
-        EnemiesToCalculate.Dispose();
-        NodePositions.Dispose();
-        NodeDistances.Dispose();
-        EnemyToIndex.Dispose();
-
-        if(EnemyIndexToReturn ==-1)
+        if(EnemyToIndex[0] != -1)
         {
-            return null;
+            EnemyIndexToReturn = EnemiesToCalculate[EnemyToIndex[0]].EnemyIndex;
+
+            EnemiesToCalculate.Dispose();
+            NodePositions.Dispose();
+            NodeDistances.Dispose();
+            EnemyToIndex.Dispose();
+            
+            return EntitySummoner.EnemiesInGame[EnemyIndexToReturn];
         }
 
-        return EntitySummoner.EnemiesInGame[EnemyIndexToReturn];
+        return null;
+
+
     }
 
     struct EnemyData
