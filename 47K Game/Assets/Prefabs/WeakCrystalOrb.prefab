@@ -220,6 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7233476147231595470}
   - component: {fileID: 8801705977955381608}
+  - component: {fileID: -4156762454062994444}
   - component: {fileID: -2344556808315667555}
   m_Layer: 3
   m_Name: WeakCrystalOrb
@@ -263,8 +264,20 @@ MonoBehaviour:
   Target: {fileID: 0}
   TowerPivot: {fileID: 848575892550954930}
   Damage: 1
-  Firerate: 1
+  Firerate: 5
   Range: 5
+--- !u!114 &-4156762454062994444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5971160596771959999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f9713136476cc4aa408812428af16b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &-2344556808315667555
 BoxCollider:
   m_ObjectHideFlags: 0
