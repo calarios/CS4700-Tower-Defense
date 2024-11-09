@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     public float MaxHealth;
     public float Health;
     public float Speed;
+
+    public float AttackPower;
     public int ID;
     public void Init()
     {

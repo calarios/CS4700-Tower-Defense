@@ -51,6 +51,7 @@ MonoBehaviour:
   MaxHealth: 5
   Health: 0
   Speed: 4
+  AttackPower: 10
   ID: 0
 --- !u!1 &6377153091912184611
 GameObject:

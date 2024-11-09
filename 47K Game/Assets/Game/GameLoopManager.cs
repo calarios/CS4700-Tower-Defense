@@ -107,6 +107,7 @@ public class GameLoopManager : MonoBehaviour
                 if(EntitySummoner.EnemiesInGame[i].NodeIndex == NodePositions.Length)
                 {
                     EnqueueEnemyToRemove(EntitySummoner.EnemiesInGame[i]);
+                    PlayerStatistics.DamageCastle((int) EntitySummoner.EnemiesInGame[i].AttackPower);//TESTING DAMAGE
                 }
             }
 
