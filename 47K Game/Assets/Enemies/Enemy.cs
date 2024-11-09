@@ -5,9 +5,14 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int NodeIndex;
+
+    public Transform RootPart;
+    public float DamageResistance = 1f;
     public float MaxHealth;
     public float Health;
     public float Speed;
+
+    public float AttackPower;
     public int ID;
     public void Init()
     {

@@ -8,9 +8,15 @@ using UnityEngine.Jobs;
 
 public class GameLoopManager : MonoBehaviour
 {
+    public static List<TowerBehavior> TowersInGame;
     public static Vector3[] NodePositions;
+    public static float[] NodeDistances;
+
+    private static Queue<EnemyDamageData> DamageData;
     private static Queue<Enemy> EnemiesToRemove;
     private static Queue<int> EnemyIDsToSummon;
+
+    private PlayerStats PlayerStatistics;
 
     public Transform NodeParent;
     public bool LoopShouldEnd;
@@ -18,6 +24,10 @@ public class GameLoopManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerStatistics = FindObjectOfType<PlayerStats>();
+
+        DamageData = new Queue<EnemyDamageData>();
+        TowersInGame = new List<TowerBehavior>();
         EnemyIDsToSummon = new Queue<int>();
         EnemiesToRemove = new Queue<Enemy>();
         EntitySummoner.Init();
@@ -28,6 +38,16 @@ public class GameLoopManager : MonoBehaviour
         {
             NodePositions[i] = NodeParent.GetChild(i).position;
         }
+
+
+        NodeDistances = new float[NodePositions.Length - 1];
+
+        for(int i = 0; i < NodeDistances.Length; i++)
+        {
+            NodeDistances[i] = Vector3.Distance(NodePositions[i], NodePositions[i + 1]);
+        }
+
+
 
         StartCoroutine(GameLoop());
         InvokeRepeating("SummonTest", 0f, 1f);
@@ -87,6 +107,7 @@ public class GameLoopManager : MonoBehaviour
                 if(EntitySummoner.EnemiesInGame[i].NodeIndex == NodePositions.Length)
                 {
                     EnqueueEnemyToRemove(EntitySummoner.EnemiesInGame[i]);
+                    PlayerStatistics.DamageCastle((int) EntitySummoner.EnemiesInGame[i].AttackPower);//TESTING DAMAGE
                 }
             }
 
@@ -95,11 +116,33 @@ public class GameLoopManager : MonoBehaviour
             EnemyAccess.Dispose();
 //            NodesToUse.Dispose();
 
-            //Tiick Towers
+            //Tick Towers
+
+            foreach(TowerBehavior tower in TowersInGame)
+            {
+                tower.Target = TowerTargeting.GetTarget(tower, TowerTargeting.TargetType.Close);
+                tower.Tick();
+            }
 
             //Apply Effects
 
             //Damage Enemies
+
+            if(DamageData.Count > 0)
+            {
+                for(int i = 0; i< DamageData.Count;i++)
+                {
+                    EnemyDamageData CurrentDamageData = DamageData.Dequeue();
+                    CurrentDamageData.TargetedEnemy.Health -= CurrentDamageData.TotalDamage = CurrentDamageData.Resistance;
+
+                    PlayerStatistics.AddMoney((int) CurrentDamageData.TotalDamage);
+
+                    if(CurrentDamageData.TargetedEnemy.Health <= 0f)
+                    {
+                        EnqueueEnemyToRemove(CurrentDamageData.TargetedEnemy);
+                    }
+                }
+            }
 
             //Remove Enemies
 
@@ -117,6 +160,11 @@ public class GameLoopManager : MonoBehaviour
         }
     }
 
+    public static void EnqueueDamageData(EnemyDamageData damagedata)
+    {
+        DamageData.Enqueue(damagedata);
+    }
+
     public static void EnqueEnemyIDToSummon(int ID)
     {
         EnemyIDsToSummon.Enqueue(ID);
@@ -126,6 +174,19 @@ public class GameLoopManager : MonoBehaviour
     {
         EnemiesToRemove.Enqueue(EnemyToRemove);
     }
+}
+
+public struct EnemyDamageData
+{
+    public EnemyDamageData(Enemy target, float damage, float resistance)
+    {
+        TargetedEnemy = target;
+        TotalDamage = damage;
+        Resistance = resistance;
+    }
+    public Enemy TargetedEnemy;
+    public float TotalDamage;
+    public float Resistance;
 }
 
 
