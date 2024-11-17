@@ -120,7 +120,7 @@ public class GameLoopManager : MonoBehaviour
 
             foreach(TowerBehavior tower in TowersInGame)
             {
-                tower.Target = TowerTargeting.GetTarget(tower, TowerTargeting.TargetType.Close);
+                tower.Target = TowerTargeting.GetTarget(tower, TowerTargeting.TargetType.First);
                 tower.Tick();
             }
 
