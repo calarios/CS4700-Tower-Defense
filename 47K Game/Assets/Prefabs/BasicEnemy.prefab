@@ -52,7 +52,7 @@ MonoBehaviour:
   Health: 0
   Speed: 4
   AttackPower: 10
-  ID: 0
+  ID: 1
 --- !u!1 &6377153091912184611
 GameObject:
   m_ObjectHideFlags: 0

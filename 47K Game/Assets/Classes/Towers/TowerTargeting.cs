@@ -29,7 +29,13 @@ public class TowerTargeting
             Enemy CurrentEnemy = EnemiesInRange[i].transform.parent.GetComponent<Enemy>();
             int EnemyIndexList = EntitySummoner.EnemiesInGame.FindIndex(x => x == CurrentEnemy);
 
-            EnemiesToCalculate[i] = new EnemyData(CurrentEnemy.transform.position, CurrentEnemy.NodeIndex, CurrentEnemy.Health, EnemyIndexList);
+            EnemiesToCalculate[i] = new EnemyData(
+                CurrentEnemy.transform.position,
+                Mathf.Clamp(CurrentEnemy.NodeIndex, 0, GameLoopManager.NodePositions.Length - 1),
+                CurrentEnemy.Health,
+                EnemyIndexList
+            );
+
         }
 
         SearchForEnemy EnemySearchJob = new SearchForEnemy
@@ -100,13 +106,22 @@ public class TowerTargeting
 
         private float GetDistanceToEnd(EnemyData enemy)
         {
+            if (enemy.NodeIndex < 0 || enemy.NodeIndex >= _NodePositions.Length)
+            {
+                Debug.LogError($"Invalid NodeIndex: {enemy.NodeIndex}");
+                return float.MaxValue; // Or another default value
+            }
+
             float totalDistance = Vector3.Distance(enemy.EnemyPosition, _NodePositions[enemy.NodeIndex]);
+
             for (int i = enemy.NodeIndex; i < _NodeDistances.Length; i++)
             {
                 totalDistance += _NodeDistances[i];
             }
+
             return totalDistance;
         }
+
 
         private bool ShouldUpdate(float currentMetric, float bestMetric, int index)
         {
