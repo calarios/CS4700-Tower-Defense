@@ -33,6 +33,8 @@ public class StandardDamage : MonoBehaviour, IDamageMethod
 
             GameLoopManager.EnqueueDamageData(new EnemyDamageData(Target, Damage, Target.DamageResistance));
 
+            
+
             Delay = 1f/Firerate;
         }
 
