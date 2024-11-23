@@ -55,7 +55,7 @@ public class GameLoopManager : MonoBehaviour
 
     void SummonTest()
     {
-        EnqueEnemyIDToSummon(2);
+        EnqueEnemyIDToSummon(1);
     }
 
     IEnumerator GameLoop()
