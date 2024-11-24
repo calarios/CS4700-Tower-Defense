@@ -122,6 +122,7 @@ public class GameLoopManager : MonoBehaviour
             {
                 tower.Target = TowerTargeting.GetTarget(tower, TowerTargeting.TargetType.Close);
                 tower.Tick();
+                // PLAY SOUND HERE
             }
 
             //Apply Effects
@@ -136,6 +137,7 @@ public class GameLoopManager : MonoBehaviour
                     CurrentDamageData.TargetedEnemy.Health -= CurrentDamageData.TotalDamage = CurrentDamageData.Resistance;
 
                     PlayerStatistics.AddMoney((int) CurrentDamageData.TotalDamage);
+                    
 
                     if(CurrentDamageData.TargetedEnemy.Health <= 0f)
                     {
