@@ -10,7 +10,6 @@ public interface IDamageMethod
 
 public class StandardDamage : MonoBehaviour, IDamageMethod
 {
-    [SerializeField] public AudioClip FireSFX;
     private float Damage;
     private float Firerate;
     private float Delay;
@@ -33,9 +32,6 @@ public class StandardDamage : MonoBehaviour, IDamageMethod
             }
 
             GameLoopManager.EnqueueDamageData(new EnemyDamageData(Target, Damage, Target.DamageResistance));
-            SoundManager.Instance.Play(FireSFX);
-
-            
 
             Delay = 1f/Firerate;
         }
