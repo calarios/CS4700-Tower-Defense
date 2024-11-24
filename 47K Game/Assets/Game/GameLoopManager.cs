@@ -48,14 +48,32 @@ public class GameLoopManager : MonoBehaviour
         }
 
 
-
+//GAME BALANCING CHANGES REQUIRED HERE FOR GAME LOOP
         StartCoroutine(GameLoop());
-        InvokeRepeating("SummonTest", 0f, 1f);
+        InvokeRepeating("ENEMY1", 5f, 0.8f);
+        InvokeRepeating("ENEMY1", 30f, 0.5f);
+
+        InvokeRepeating("ENEMY1", 75f, 0.2f);
+
+        InvokeRepeating("ENEMY2", 200f, 1f);
+
+        Invoke("StopAllInvokes", 300f);
     }
 
-    void SummonTest()
+    void ENEMY1()
     {
         EnqueEnemyIDToSummon(1);
+    }
+
+    void ENEMY2()
+    {
+        EnqueEnemyIDToSummon(2);
+    }
+
+    void StopAllInvokes()
+    {
+        CancelInvoke();
+        Debug.Log("Stopped all invokes.");
     }
 
     IEnumerator GameLoop()

@@ -2670,7 +2670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoneyDisplayText: {fileID: 2032222984}
-  StartingMoney: 400
+  StartingMoney: 100
   HealthDisplayText: {fileID: 1590071885}
   StartingHealth: 100
 --- !u!1 &2066926023
