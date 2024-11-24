@@ -17,7 +17,6 @@ public class TowerBehavior : MonoBehaviour
     private float Delay;
 
     private IDamageMethod CurrentDamageMethodClass;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +38,6 @@ public class TowerBehavior : MonoBehaviour
     public void Tick()
     {
         CurrentDamageMethodClass.DamageTick(Target);
-        
 
         if(Target != null)
         {

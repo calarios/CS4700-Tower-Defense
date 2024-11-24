@@ -450,7 +450,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LazerPivot: {fileID: 7165599929249146450}
   LazerRenderer: {fileID: 8007358384541415674}
-  LazerSFX: {fileID: 8300000, guid: 9253035c133d3784fb1015fe09d39601, type: 3}
 --- !u!65 &-2344556808315667555
 BoxCollider:
   m_ObjectHideFlags: 0

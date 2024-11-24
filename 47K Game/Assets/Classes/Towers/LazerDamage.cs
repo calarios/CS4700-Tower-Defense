@@ -6,7 +6,6 @@ public class LazerDamage : MonoBehaviour, IDamageMethod
 {
     [SerializeField] private Transform LazerPivot;
     [SerializeField] private LineRenderer LazerRenderer;
-    [SerializeField] public AudioClip LazerSFX;
 
     private float Damage;
     private float Firerate;
@@ -21,13 +20,11 @@ public class LazerDamage : MonoBehaviour, IDamageMethod
 
     public void DamageTick(Enemy Target)
     {
-        
         if(Target)
         {
             LazerRenderer.enabled = true;
             LazerRenderer.SetPosition(0, LazerPivot.position);
             LazerRenderer.SetPosition(1, Target.RootPart.position);
-            
 
             if(Delay > 0f)
             {
@@ -35,13 +32,12 @@ public class LazerDamage : MonoBehaviour, IDamageMethod
                 return;
             }
 
-            
             GameLoopManager.EnqueueDamageData(new EnemyDamageData(Target, Damage, Target.DamageResistance));
-            SoundManager.Instance.Play(LazerSFX);
+
             Delay = 1f/Firerate;
             return;
         }
-        
+
         LazerRenderer.enabled = false;        
     }
 }
