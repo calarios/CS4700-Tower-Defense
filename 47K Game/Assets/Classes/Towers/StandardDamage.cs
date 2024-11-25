@@ -34,10 +34,8 @@ public class StandardDamage : MonoBehaviour, IDamageMethod
                 return;
             }
 
-            GameLoopManager.EnqueueDamageData(new EnemyDamageData(Target, Damage, Target.DamageResistance));
             SoundManager.Instance.Play(FireSFX);
-
-            
+            GameLoopManager.EnqueueDamageData(new EnemyDamageData(Target, Damage, Target.DamageResistance));
 
             Delay = 1f/Firerate;
         }
