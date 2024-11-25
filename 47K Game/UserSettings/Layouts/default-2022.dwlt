@@ -20,9 +20,13 @@ MonoBehaviour:
     height: 1037
   m_ShowMode: 4
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_Title: Inspector
 =======
   m_Title: Game
+>>>>>>> Stashed changes
+=======
+  m_Title: Project
 >>>>>>> Stashed changes
   m_RootView: {fileID: 7}
   m_MinSize: {x: 875, y: 300}
@@ -108,9 +112,13 @@ MonoBehaviour:
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   controlID: 16
 =======
   controlID: 153
+>>>>>>> Stashed changes
+=======
+  controlID: 149
 >>>>>>> Stashed changes
   draggingID: 0
 --- !u!114 &5
@@ -242,9 +250,13 @@ MonoBehaviour:
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   controlID: 17
 =======
   controlID: 154
+>>>>>>> Stashed changes
+=======
+  controlID: 150
 >>>>>>> Stashed changes
   draggingID: 0
 --- !u!114 &10
@@ -293,9 +305,13 @@ MonoBehaviour:
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   controlID: 125
 =======
   controlID: 129
+>>>>>>> Stashed changes
+=======
+  controlID: 116
 >>>>>>> Stashed changes
   draggingID: 0
 --- !u!114 &12
@@ -448,10 +464,15 @@ MonoBehaviour:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       m_SelectedIDs: 4a5a0000
       m_LastClickedID: 23114
 =======
       m_SelectedIDs: 
+      m_LastClickedID: 0
+>>>>>>> Stashed changes
+=======
+      m_SelectedIDs: 26080000
       m_LastClickedID: 0
 >>>>>>> Stashed changes
       m_ExpandedIDs: 32fbffff
@@ -571,7 +592,11 @@ MonoBehaviour:
     m_SearchArea: 1
     m_Folders:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     - Assets/Prefabs
+=======
+    - Assets/Game
+>>>>>>> Stashed changes
 =======
     - Assets/Game
 >>>>>>> Stashed changes
@@ -621,6 +646,7 @@ MonoBehaviour:
       m_ResourceFile: 
   m_AssetTreeState:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     scrollPos: {x: 0, y: 129}
     m_SelectedIDs: 
     m_LastClickedID: 0
@@ -631,20 +657,26 @@ MonoBehaviour:
     m_LastClickedID: 0
     m_ExpandedIDs: ffffffff00000000765b0000785b00007a5b00007c5b00007e5b0000805b0000825b0000845b0000865b0000885b00008a5b00008c5b0000
 >>>>>>> Stashed changes
+=======
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: ffffffff00000000585b00005a5b00005c5b00005e5b0000605b0000625b0000645b0000665b0000685b00006a5b00006c5b00006e5b0000705b0000725b0000745b0000765b0000
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: SoundManager
+      m_OriginalName: SoundManager
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 2086
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 6}
     m_SearchString: 
