@@ -68,6 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f9713136476cc4aa408812428af16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FireSFX: {fileID: 8300000, guid: 67d504bcdb99dec4084bb7d12f4af14c, type: 3}
+  MagicSFX: {fileID: 8300000, guid: 9253035c133d3784fb1015fe09d39601, type: 3}
 --- !u!65 &-2344556808315667555
 BoxCollider:
   m_ObjectHideFlags: 0
