@@ -15,6 +15,8 @@ public class StandardDamage : MonoBehaviour, IDamageMethod
     private float Firerate;
     private float Delay;
 
+    [SerializeField] public AudioClip MagicSFX;
+
     public void Init(float Damage, float Firerate)
     {
         this.Damage = Damage;
@@ -33,9 +35,13 @@ public class StandardDamage : MonoBehaviour, IDamageMethod
             }
 
             GameLoopManager.EnqueueDamageData(new EnemyDamageData(Target, Damage, Target.DamageResistance));
+<<<<<<< Updated upstream
             SoundManager.Instance.Play(FireSFX);
 
             
+=======
+            SoundManager.Instance.Play(MagicSFX);
+>>>>>>> Stashed changes
 
             Delay = 1f/Firerate;
         }

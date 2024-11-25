@@ -38,6 +38,10 @@ public class LazerDamage : MonoBehaviour, IDamageMethod
             
             GameLoopManager.EnqueueDamageData(new EnemyDamageData(Target, Damage, Target.DamageResistance));
             SoundManager.Instance.Play(LazerSFX);
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
             Delay = 1f/Firerate;
             return;
         }
