@@ -360,6 +360,7 @@
 "Assets/Game/EntitySummoner.cs"
 "Assets/Game/GameLoopManager.cs"
 "Assets/Game/SoundManager.cs"
+"Assets/MainMenu.cs"
 "Assets/Player/PlayerStats.cs"
 "Assets/Player/TowerPlacement.cs"
 "Assets/ScriptableObjectSources/EnemySummonData.cs"
