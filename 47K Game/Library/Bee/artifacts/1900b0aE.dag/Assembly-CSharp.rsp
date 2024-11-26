@@ -361,7 +361,13 @@
 "Assets/Game/GameLoopManager.cs"
 "Assets/Game/SoundManager.cs"
 "Assets/MainMenu.cs"
+"Assets/MoveCamera.cs"
+"Assets/Player/CameraSwitcher.cs"
+"Assets/Player/FirstPersonMovement.cs"
+"Assets/Player/PlayerFirstPerson.cs"
+"Assets/Player/PlayerMovement.cs"
 "Assets/Player/PlayerStats.cs"
+"Assets/Player/PS_FPS_View.cs"
 "Assets/Player/TowerPlacement.cs"
 "Assets/ScriptableObjectSources/EnemySummonData.cs"
 -langversion:9.0
