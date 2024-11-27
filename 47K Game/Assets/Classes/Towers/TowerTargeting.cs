@@ -27,6 +27,11 @@ public class TowerTargeting
         for (int i = 0; i < EnemiesToCalculate.Length; i++)
         {
             Enemy CurrentEnemy = EnemiesInRange[i].transform.parent.GetComponent<Enemy>();
+
+            // Add null check for CurrentEnemy
+            if (CurrentEnemy == null || !CurrentEnemy.gameObject.activeInHierarchy) 
+                continue;
+
             int EnemyIndexList = EntitySummoner.EnemiesInGame.FindIndex(x => x == CurrentEnemy);
 
             EnemiesToCalculate[i] = new EnemyData(
@@ -35,7 +40,6 @@ public class TowerTargeting
                 CurrentEnemy.Health,
                 EnemyIndexList
             );
-
         }
 
         SearchForEnemy EnemySearchJob = new SearchForEnemy

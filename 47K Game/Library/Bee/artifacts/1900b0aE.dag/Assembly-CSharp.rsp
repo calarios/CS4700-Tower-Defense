@@ -357,6 +357,7 @@
 "Assets/Classes/Towers/TowerBehavior.cs"
 "Assets/Classes/Towers/TowerTargeting.cs"
 "Assets/Enemies/Enemy.cs"
+"Assets/FPS_Shooter.cs"
 "Assets/Game/EntitySummoner.cs"
 "Assets/Game/GameLoopManager.cs"
 "Assets/Game/SoundManager.cs"

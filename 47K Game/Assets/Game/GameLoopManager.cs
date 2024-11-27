@@ -50,14 +50,15 @@ public class GameLoopManager : MonoBehaviour
 
 //GAME BALANCING CHANGES REQUIRED HERE FOR GAME LOOP
         StartCoroutine(GameLoop());
-        InvokeRepeating("ENEMY1", 5f, 0.8f);
+        InvokeRepeating("ENEMY1", 5f, 1f);
         InvokeRepeating("ENEMY1", 30f, 0.5f);
 
-        InvokeRepeating("ENEMY1", 75f, 0.2f);
+        InvokeRepeating("ENEMY1", 100f, 0.2f);
 
         InvokeRepeating("ENEMY2", 200f, 1f);
+        InvokeRepeating("ENEMY2", 300f, 0.5f);
+        InvokeRepeating("ENEMY2", 600f, 0.2f);
 
-        Invoke("StopAllInvokes", 300f);
     }
 
     void ENEMY1()
@@ -118,16 +119,22 @@ public class GameLoopManager : MonoBehaviour
 
             MoveJobHandle.Complete();
 
-            for(int i = 0; i < EntitySummoner.EnemiesInGame.Count; i++)
+            for (int i = 0; i < EntitySummoner.EnemiesInGame.Count; i++)
             {
-                EntitySummoner.EnemiesInGame[i].NodeIndex = NodeIndices[i];
-
-                if(EntitySummoner.EnemiesInGame[i].NodeIndex == NodePositions.Length)
+                if (EntitySummoner.EnemiesInGame[i] != null)
                 {
-                    EnqueueEnemyToRemove(EntitySummoner.EnemiesInGame[i]);
-                    PlayerStatistics.DamageCastle((int) EntitySummoner.EnemiesInGame[i].AttackPower);//TESTING DAMAGE
+                    // Process enemy
+                    Enemy enemy = EntitySummoner.EnemiesInGame[i];
+                    enemy.NodeIndex = NodeIndices[i];
+
+                    if (enemy.NodeIndex == NodePositions.Length)
+                    {
+                        EnqueueEnemyToRemove(enemy);
+                        PlayerStatistics.DamageCastle((int)enemy.AttackPower);
+                    }
                 }
             }
+
 
             NodesToUse.Dispose();
             EnemySpeeds.Dispose();
