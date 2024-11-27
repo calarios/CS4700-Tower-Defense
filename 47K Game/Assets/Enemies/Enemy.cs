@@ -20,4 +20,11 @@ public class Enemy : MonoBehaviour
         transform.position = GameLoopManager.NodePositions[0];
         NodeIndex = 0;
     }
+
+    public void Die()
+    {
+        // Handle enemy death, e.g., play death animation, remove from game, etc.
+        Debug.Log($"{name} has died!");
+        Destroy(gameObject); // Example: destroy the enemy object
+    }
 }

@@ -6,33 +6,47 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI MoneyDisplayText;
-    [SerializeField] private int StartingMoney;
-    private int CurrentMoney;
-
     [SerializeField] private TextMeshProUGUI HealthDisplayText;
-    [SerializeField] private int StartingHealth;
+
+    [SerializeField] private TextMeshProUGUI MoneyDisplayText2;
+    [SerializeField] private TextMeshProUGUI HealthDisplayText2;
+    [SerializeField] private int StartingMoney = 1000;
+    [SerializeField] private int StartingHealth = 100;
+    private int CurrentMoney;
     private int CurrentHealth;
 
-    // Start is called before the first frame update
+    // Singleton pattern for centralized access
+    public static PlayerStats Instance { get; private set; }
+
+    private void Awake()
+    {
+        // Ensure only one instance of PlayerStats exists in the scene
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Start()
     {
         CurrentMoney = StartingMoney;
-        MoneyDisplayText.SetText($"${StartingMoney}");
-
         CurrentHealth = StartingHealth;
-        HealthDisplayText.SetText($"Health Percentage: {StartingHealth}%");
+
+        // Set initial values for UI
+        UpdateMoneyDisplay();
+        UpdateHealthDisplay();
     }
 
-    public void AddMoney(int MoneyToAdd)
+    public void AddMoney(int amount)
     {
-        if (!(CurrentHealth <= 0))
+        if (CurrentHealth > 0)  // Prevent adding money if the castle is destroyed
         {
-            CurrentMoney += MoneyToAdd;
-            MoneyDisplayText.SetText($"${CurrentMoney}");
-        }
-        else
-        {
-            MoneyDisplayText.SetText("THE CASTLE IS DESTROYED!");
+            CurrentMoney += amount;
+            UpdateMoneyDisplay();
         }
     }
 
@@ -41,17 +55,15 @@ public class PlayerStats : MonoBehaviour
         return CurrentMoney;
     }
 
-    public void DamageCastle(int castleDamage)
+    public void DamageCastle(int amount)
     {
+        CurrentHealth -= amount;
+        UpdateHealthDisplay();
 
-        
-        CurrentHealth -= castleDamage;
-        HealthDisplayText.SetText($"Health Percentage: {CurrentHealth}%");
-        
         if (CurrentHealth <= 0)
         {
             HealthDisplayText.SetText("GAME OVER");
-
+            HealthDisplayText2.SetText("GAME OVER");
             CurrentMoney = 0;
         }
     }
@@ -59,5 +71,17 @@ public class PlayerStats : MonoBehaviour
     public int GetHealth()
     {
         return CurrentHealth;
+    }
+
+    private void UpdateMoneyDisplay()
+    {
+        MoneyDisplayText.SetText($"${CurrentMoney}");
+        MoneyDisplayText2.SetText($"${CurrentMoney}");
+    }
+
+    private void UpdateHealthDisplay()
+    {
+        HealthDisplayText.SetText($"Health: {CurrentHealth}%");
+        HealthDisplayText2.SetText($"Health: {CurrentHealth}%");
     }
 }

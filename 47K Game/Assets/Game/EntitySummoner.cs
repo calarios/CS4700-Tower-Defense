@@ -40,54 +40,64 @@ public class EntitySummoner : MonoBehaviour
     }
 
     public static Enemy SummonEnemy(int EnemyID)
+{
+    Enemy SummonedEnemy = null;
+
+    if(EnemyPrefabs.ContainsKey(EnemyID))
     {
-        Enemy SummonedEnemy = null;
-
-        if(EnemyPrefabs.ContainsKey(EnemyID))
+        Queue<Enemy> ReferencedQueue = EnemyObjectPools[EnemyID];
+        if(ReferencedQueue.Count > 0)
         {
-            Queue<Enemy> ReferencedQueue = EnemyObjectPools[EnemyID];
-            if(ReferencedQueue.Count > 0)
+            // Dequeue Enemy and initialize
+            SummonedEnemy = ReferencedQueue.Dequeue();
+
+            // Check if enemy has been destroyed before initializing
+            if(SummonedEnemy == null || !SummonedEnemy.gameObject.activeInHierarchy)
             {
-                //Dequeue Enemy and iniialized
-
-                SummonedEnemy = ReferencedQueue.Dequeue();
-                SummonedEnemy.Init();
-
-                SummonedEnemy.gameObject.SetActive(true);
+                SummonedEnemy = InstantiateNewEnemy(EnemyID);
             }
             else
             {
-                //Instantiate new instance of enemy and initialized
-                GameObject NewEnemy = Instantiate(EnemyPrefabs[EnemyID], GameLoopManager.NodePositions[0], Quaternion.identity);
-                SummonedEnemy = NewEnemy.GetComponent<Enemy>();
                 SummonedEnemy.Init();
+                SummonedEnemy.gameObject.SetActive(true);
             }
         }
         else
         {
-            Debug.Log($"ENTITYSUMMONER: ENEMY WITH ID OF {EnemyID} DOES NOT EXIST!");
-            return null;
+            SummonedEnemy = InstantiateNewEnemy(EnemyID);
         }
-
-        if(!EnemiesInGame.Contains(SummonedEnemy))
-        {
-            EnemiesInGame.Add(SummonedEnemy);
-        }
-
-        if(!EnemiesInGameTransform.Contains(SummonedEnemy.transform))
-        {
-            EnemiesInGameTransform.Add(SummonedEnemy.transform);
-        }
-
-        SummonedEnemy.ID = EnemyID;
-        return SummonedEnemy;
     }
+    else
+    {
+        Debug.Log($"ENTITYSUMMONER: ENEMY WITH ID OF {EnemyID} DOES NOT EXIST!");
+        return null;
+    }
+
+    EnemiesInGame.Add(SummonedEnemy);
+    EnemiesInGameTransform.Add(SummonedEnemy.transform);
+
+    return SummonedEnemy;
+}
+
+private static Enemy InstantiateNewEnemy(int EnemyID)
+{
+    GameObject NewEnemy = Instantiate(EnemyPrefabs[EnemyID], GameLoopManager.NodePositions[0], Quaternion.identity);
+    Enemy SummonedEnemy = NewEnemy.GetComponent<Enemy>();
+    SummonedEnemy.Init();
+    return SummonedEnemy;
+}
+
 
     public static void RemoveEnemy(Enemy EnemyToRemove)
     {
+        if (EnemyToRemove == null || !EnemyToRemove.gameObject.activeInHierarchy) return;
+
         EnemyObjectPools[EnemyToRemove.ID].Enqueue(EnemyToRemove);
         EnemyToRemove.gameObject.SetActive(false);
         EnemiesInGameTransform.Remove(EnemyToRemove.transform);
         EnemiesInGame.Remove(EnemyToRemove);
     }
+
+
+
 }
